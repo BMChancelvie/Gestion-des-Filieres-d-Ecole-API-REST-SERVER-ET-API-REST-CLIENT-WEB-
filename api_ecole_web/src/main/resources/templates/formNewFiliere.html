@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+
+    <title>Ajout d'une Filière</title>
+
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        .special {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href=".">Api Web de Gestion de Filieres d'une Ecole</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container special">
+
+    <h2>Ajout d'une nouvelle Filière</h2>
+    
+    <form th:action="@{/saveFiliere}" th:object="${filiere}" method="post">
+        <div class="form-group">
+            <label for="Nom_ApiInput">Nom de la filière</label>
+            <input type="text" th:field="*{nom_filiere}" id="nom_filiere" placeholder="Saisissez le nom de la filière">
+            <small class="text-muted">Saisissez le nom de la filière.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="Description_ApiInput">Numéro de la Classe</label>
+            <select th:field="*{classe.id_classe}" id="classe">
+                <option value="">Sélectionnez une classe</option>
+                <option th:each="classe : ${classes}" th:value="${classe.id_classe}" th:text="${classe.nom_classe}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+        <a th:href="@{/filieres}" class="btn btn-default">Retour</a>
+    </form>
+    
+    <h4><a th:href="@{/}">Retour à la page d'accueil</a></h4>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>
