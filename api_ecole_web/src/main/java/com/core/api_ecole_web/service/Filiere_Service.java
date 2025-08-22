@@ -42,6 +42,14 @@ public class Filiere_Service {
 		
 		Filiere savedFiliere;
 		
+		if (filiere.getNom_filiere() == null || filiere.getNom_filiere().trim().isEmpty()) {
+            throw new IllegalArgumentException("Le nom de la filière ne peut pas être vide");
+        }
+		
+		if (filiere.getClasse() == null || filiere.getClasse().getId_classe() == null) {
+            throw new IllegalArgumentException("La classe de la filière ne peut pas être null");
+        }
+		
 		filiere.setNom_filiere(filiere.getNom_filiere().toUpperCase());
 
 		if(filiere.getId_filiere() == null) {

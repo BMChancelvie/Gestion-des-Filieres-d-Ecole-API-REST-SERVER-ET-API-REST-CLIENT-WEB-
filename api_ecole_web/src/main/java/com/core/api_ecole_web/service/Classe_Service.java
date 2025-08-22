@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import com.core.api_ecole_web.model.Classe;
 import com.core.api_ecole_web.repository.ClasseProxy;
 
-import java.util.List;
-import java.util.ArrayList;
+/*import java.util.List;
+import java.util.ArrayList;*/
 
 import lombok.Data;
 
