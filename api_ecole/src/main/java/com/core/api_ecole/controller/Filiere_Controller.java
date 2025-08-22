@@ -74,28 +74,31 @@ public class Filiere_Controller {
 	 endpoint pour mettre à jour une filiere
 	 */
 	
-	@PutMapping("/filiere/{id_filiere}")
-	public Filiere updateFiliere(@PathVariable("id_filiere") final Long id_filiere, @RequestBody Filiere filiere) {
-		Optional<Filiere> e = filiereService.getFiliere(id_filiere);
-		if(e.isPresent()) {
-			Filiere currentFiliere = e.get();
-			
-			String nom_filiere = filiere.getNom_filiere();
-			if(nom_filiere != null) {
-				currentFiliere.setNom_filiere(nom_filiere);
-			}
-			// Appel directement l'objet Classe
-			Classe id_classe = filiere.getClasse();
-			if(id_classe != null) {
-				currentFiliere.setClasse(id_classe);
-			}
-			filiereService.saveFiliere(currentFiliere);
-			return currentFiliere;
-		} else {
-			return null;
-		}
-	}
-	
+
+    @PutMapping("/filiere/{id_filiere}")
+    public Filiere updateFiliere(@PathVariable("id_filiere") final Long id_filiere, @RequestBody Filiere filiere) {
+        Optional<Filiere> e = filiereService.getFiliere(id_filiere);
+        if (e.isPresent()) {
+            Filiere currentFiliere = e.get();
+
+            String nom_filiere = filiere.getNom_filiere();
+            if (nom_filiere != null && !nom_filiere.trim().isEmpty()) {
+                currentFiliere.setNom_filiere(nom_filiere.toUpperCase());
+            } else {
+                throw new IllegalArgumentException("Le nom de la filière ne peut pas être vide");
+            }
+
+            Classe classe = filiere.getClasse();
+            if (classe != null && classe.getId_classe() != null) {
+                return filiereService.saveFiliere(currentFiliere, classe.getId_classe());
+            } else {
+                throw new IllegalArgumentException("La classe de la filière ne peut pas être null");
+            }
+        } else {
+            throw new RuntimeException("Filière non trouvée pour l'ID: " + id_filiere);
+        }
+    }
+
 	
 	/**
 	endpoint pour supprimer une filiere
