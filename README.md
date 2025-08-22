@@ -1,4 +1,4 @@
----------------------------------------------- INSTRUCTIONS DE MISE EN MARCHE ---------------------------------------------
+-------------------------------- INSTRUCTIONS DE MISE EN MARCHE -------------------------------
 
 Dans ce code JAVA JEE, nous avons une application Spring Boot Micro-Service qui fonctionne avec une API SERVER REST et une API CLIENT REST WEB.
 Pour accéder à l'API SERVER REST, on passe via l'API CLIENT REST avec une interface WEB accéssible via le lien: http://localhost:9095/
