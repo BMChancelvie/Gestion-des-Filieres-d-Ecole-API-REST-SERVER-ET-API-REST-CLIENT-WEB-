@@ -1,6 +1,8 @@
 -------------------------------- INSTRUCTIONS DE MISE EN MARCHE -------------------------------
 
 Dans ce code JAVA JEE, nous avons une application Spring Boot Micro-Service qui fonctionne avec une API SERVER REST et une API CLIENT REST WEB.
+L'application consiste à gérer les filières d'une école qui y seront enregistrées et les classes de cette école.
+
 Pour accéder à l'API SERVER REST, on passe via l'API CLIENT REST avec une interface WEB accéssible via le lien: http://localhost:9095/
 Faudra au préalable, créer une BASE DE DONNEES sur POSTGREQSL nommée "ecole". Car, c'est ainsi qu'elle a été configuré sur l'API SERVER REST.
 
