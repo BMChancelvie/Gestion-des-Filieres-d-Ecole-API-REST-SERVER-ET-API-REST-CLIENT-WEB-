@@ -49,6 +49,12 @@ public class Classe_Controller {
 	}
 	
 	@PostMapping("/saveClasse")
+    public ModelAndView saveClasse(@ModelAttribute Classe classe) {
+        service.saveClasse(classe);
+        return new ModelAndView("redirect:/classes");
+    }
+	
+	/*@PostMapping("/saveClasse")
 	public ModelAndView saveClasse(@ModelAttribute Classe classe) {
 		if(classe.getId_classe() != null) {
 			Classe current = service.getClasse(classe.getId_classe());
@@ -56,6 +62,6 @@ public class Classe_Controller {
 		}
 		service.saveClasse(classe);
 		return new ModelAndView("redirect:/classes");	
-	}
+	}*/
 	
 }
